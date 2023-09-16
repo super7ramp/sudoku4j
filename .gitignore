@@ -5,4 +5,5 @@ out
 
 # Gradle stuff
 .gradle
+gradle*
 **/build/*
