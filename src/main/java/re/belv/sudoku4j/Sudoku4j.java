@@ -47,7 +47,8 @@ public final class Sudoku4j {
      *
      * @param boardArg the board, i.e. a two-dimensional 9x9 array, indexed by rows then by columns,
      *                 whose values are between 0 and 9, 0 denoting the absence of an actual value
-     * @throws IllegalArgumentException if board is invalid
+     * @throws NullPointerException     if given board is {@code null}
+     * @throws IllegalArgumentException if given board is non-{@code null} but invalid
      */
     public Sudoku4j(final int[][] boardArg) {
         this(boardArg, DEFAULT_TIMEOUT);
@@ -60,7 +61,8 @@ public final class Sudoku4j {
      *                   columns, whose values are between 0 and 9, 0 denoting the absence of an
      *                   actual value
      * @param timeoutArg the timeout in seconds
-     * @throws IllegalArgumentException if board is invalid
+     * @throws NullPointerException     if given board is {@code null}
+     * @throws IllegalArgumentException if given board is non-{@code null} but invalid
      */
     public Sudoku4j(final int[][] boardArg, final int timeoutArg) {
         board = validateBoard(boardArg);
@@ -270,7 +272,7 @@ public final class Sudoku4j {
      * @param board the input board
      * @return the input board
      * @throws NullPointerException     if given board is {@code null}
-     * @throws IllegalArgumentException if given board is invalid
+     * @throws IllegalArgumentException if given board is non-{@code null} but invalid
      */
     private static int[][] validateBoard(final int[][] board) {
         Objects.requireNonNull(board);

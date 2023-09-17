@@ -7,8 +7,6 @@ package re.belv.sudoku4j;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -99,7 +97,6 @@ final class Sudoku4jTest {
                 {9, 8, 7, 6, 5, 4, 3, 2, 1}
         };
         final int[][] outputBoard = new Sudoku4j(inputBoard).solve();
-        System.out.println(Arrays.deepToString(outputBoard));
         assertArrayEquals(NO_SOLUTION, outputBoard);
     }
 
