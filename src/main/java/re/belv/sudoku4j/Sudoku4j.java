@@ -81,7 +81,7 @@ public final class Sudoku4j {
             addRules();
             return findSolution();
         } catch (final ContradictionException e) {
-            throw new IllegalStateException("Unexpected solver error");
+            throw new IllegalStateException("Unexpected solver error", e);
         } catch (final TimeoutException e) {
             return noSolution();
         }
