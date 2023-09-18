@@ -6,6 +6,8 @@
 package re.belv.sudoku4j;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -139,5 +141,25 @@ final class Sudoku4jTest {
                 assertThrows(IllegalArgumentException.class, () -> new Sudoku4j(inputBoard));
         assertEquals("Invalid number of columns for row #0: Expected 9, got 8",
                      exception.getMessage());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {-42, -1, 10, 42})
+    void illegalInput_invalidValue(final int invalidValue) {
+        final int[][] inputBoard = new int[][]{
+                {2, 7, 6, 1, 3, 5, 8, 4, 9},
+                {8, 3, 5, 2, 4, 9, 1, 7, 6},
+                {1, 4, 9, 7, 8, 6, 2, 3, 5},
+                {5, 6, invalidValue, 4, 1, 2, 7, 9, 8},
+                {4, 1, 2, 9, 7, 8, 5, 6, 3},
+                {7, 9, 8, 5, 6, 3, 4, 1, 2},
+                {6, 5, 4, 3, 2, 1, 9, 8, 7},
+                {3, 2, 1, 8, 9, 7, 6, 5, 4},
+                {9, 8, 7, 6, 5, 4, 3, 2, 1}
+        };
+        final var exception =
+                assertThrows(IllegalArgumentException.class, () -> new Sudoku4j(inputBoard));
+        assertEquals("Invalid value at column #2, row #3: Expected a value between 0 and 9, got " +
+                     invalidValue, exception.getMessage());
     }
 }
