@@ -4,7 +4,8 @@
  */
 
 plugins {
-    id("java")
+    java
+    id("org.javamodularity.moduleplugin") version "1.8.12"
 }
 
 group = "re.belv"
