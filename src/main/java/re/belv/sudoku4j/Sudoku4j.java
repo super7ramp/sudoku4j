@@ -197,9 +197,8 @@ public final class Sudoku4j {
                 final int value = board[row][column];
                 if (value > 0) {
                     final int variable = toVar(row, column, value - 1);
-                    final VecInt literal = new VecInt(1);
-                    literal.push(variable);
-                    solver.addClause(literal);
+                    final VecInt literals = new VecInt(new int[]{variable});
+                    solver.addClause(literals);
                 }
             }
         }
@@ -267,7 +266,7 @@ public final class Sudoku4j {
     }
 
     /**
-     * Validates input board
+     * Validates input board.
      *
      * @param board the input board
      * @return the input board
