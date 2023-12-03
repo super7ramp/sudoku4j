@@ -77,7 +77,7 @@ public final class Sudoku4j {
      */
     public int[][] solve() {
         try {
-            initSolver();
+            allocateVariables();
             addRules();
             return findSolution();
         } catch (final ContradictionException e) {
@@ -88,9 +88,9 @@ public final class Sudoku4j {
     }
 
     /**
-     * General solver initialization.
+     * Allocates variables. Optional but Sat4j javadoc advises to do it for performance.
      */
-    private void initSolver() {
+    private void allocateVariables() {
         solver.newVar(NUMBER_OF_VALUES * NUMBER_OF_COLUMNS * NUMBER_OF_ROWS);
     }
 
